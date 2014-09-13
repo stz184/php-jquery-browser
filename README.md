@@ -40,7 +40,7 @@ Browser::get()->version;
 ```php
 Browser::get()->ipad
 Browser::get()->iphone
-Browser::get()->["windows phone"]
+Browser::get()->{"windows phone"}
 Browser::get()->android
 Browser::get()->cros
 Browser::get()->win

@@ -1,6 +1,6 @@
 <?php
 
-class Browser implements arrayaccess {
+class Browser {
     protected static $instances = array();
 
 	protected $browser;
@@ -123,28 +123,4 @@ class Browser implements arrayaccess {
 	public function __get($property) {
 		return array_key_exists($property, $this->browser) ? $this->browser[$property] : false;
 	}
-
-	public function offsetSet($offset, $value) {
-        throw new Exception('Method not allowed');
-    }
-
-    public function offsetExists($offset) {
-        return isset($this->browser[$offset]);
-    }
-
-    public function offsetUnset($offset) {
-        unset($this->browser[$offset]);
-    }
-    public function offsetGet($offset) {
-        return isset($this->browser[$offset]) ? $this->browser[$offset] : null;
-    }
 }
-
-$b = new Browser();
-echo "Name: " . $b->name . "<br>";
-echo "Version: " . $b->version . "<br>";
-echo "OS: " . $b->platform . "<br>";
-echo "Mobile: " . var_export($b->mobile, true) . "<br>";
-echo "MS IE " . var_export(Browser::get()->msie, true) . "<br>";
-echo "Mozilla " . var_export(Browser::get()->mozilla, true) . "<br>";
-echo "Win Phone " . var_export(Browser::get()['windows phone'], true) . "<br>";
